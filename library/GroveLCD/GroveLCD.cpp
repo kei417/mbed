@@ -4,6 +4,8 @@
 #include <string.h>
 #include <cstdarg>
 
+using namespace std;
+
 char _displayfunction;
 char _displaycontrol;
 
@@ -86,8 +88,8 @@ void GroveLCD::init()
    _displayfunction |= LCD_5x10DOTS;
  
    // Wait for more than 30 ms after power rises above 4.5V per the data sheet
-    wait_ms(50);
-
+//    wait_ms(50);
+    ThisThread::sleep_for(50);
 
     // Send first function set command. Wait longer that 39 us per the data sheet
     sendCommand(LCD_FUNCTIONSET | _displayfunction);

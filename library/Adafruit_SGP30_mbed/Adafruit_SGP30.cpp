@@ -163,7 +163,7 @@ bool Adafruit_SGP30::setIAQBaseline(uint16_t eco2_base, uint16_t tvoc_base) {
 /**************************************************************************/
 
 
-bool Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLength, uint16_t delayms, uint16_t *readdata, uint8_t readlen)
+bool Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLength, uint32_t delayms, uint16_t *readdata, uint8_t readlen)
 {
   uint8_t retval;
   
@@ -189,8 +189,9 @@ bool Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLengt
   printf("\n");
 #endif
 
-  wait_ms(delayms);
-  
+//  wait_ms(delayms);
+    ThisThread::sleep_for(delayms);
+ 
   
 
   if (readlen == 0) 

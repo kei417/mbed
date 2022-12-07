@@ -133,7 +133,7 @@ bool BME280::get(int32_t& temperature, uint32_t& pressure, uint32_t& humidity) {
         // Wait for measurement to finish
         do {
             val = read_status();
-            if ((val&STATUS_MEASURING)!=0) wait_ms(1);
+            if ((val&STATUS_MEASURING)!=0)     ThisThread::sleep_for(1);
         }  while(val&STATUS_MEASURING);
     }
     int32_t rawT, rawP, rawH;
@@ -251,7 +251,7 @@ uint32_t BME280::compensate_H(int32_t raw_H) {
 bool BME280::reset(void) {
     m_bOk = false;
     if (write8(REG_RESET,VAL_RESET)) {
-        wait_ms(2);
+        ThisThread::sleep_for(2);
         m_mode = MODE_SLEEP;
         return true;
     }

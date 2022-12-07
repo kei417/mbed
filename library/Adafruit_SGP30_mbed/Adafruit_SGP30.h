@@ -63,6 +63,6 @@ class Adafruit_SGP30 {
 
   void write(uint8_t address, uint8_t *data, uint8_t n);
   void read(uint8_t address, uint8_t *data, uint8_t n);
-  bool readWordFromCommand(uint8_t command[], uint8_t commandLength, uint16_t delay, uint16_t *readdata = NULL, uint8_t readlen = 0);
+  bool readWordFromCommand(uint8_t command[], uint8_t commandLength, uint32_t delay, uint16_t *readdata = NULL, uint8_t readlen = 0);
   uint8_t generateCRC(uint8_t data[], uint8_t datalen);
 };
